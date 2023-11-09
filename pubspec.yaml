@@ -1,0 +1,483 @@
+name: adopet_app
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  cupertino_icons: ^1.0.6
+  dio: ^5.3.3
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.1.0
+  http: ^1.1.0
+  image: ^4.1.3
+  image_picker: ^1.0.4
+  provider: ^6.1.0
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/img/
+    - assets/page-1/
+    - assets/page-1/images/.png
+    - assets/page-1/images/-opn.png
+    - assets/page-1/images/-CVG.png
+    - assets/page-1/images/-Zke.png
+    - assets/page-1/images/-dfp.png
+    - assets/page-1/images/shape1-1.png
+    - assets/page-1/images/-fPQ.png
+    - assets/page-1/images/-sri.png
+    - assets/page-1/images/-FJz.png
+    - assets/page-1/images/shape1-2.png
+    - assets/page-1/images/-z5Q.png
+    - assets/page-1/images/-4sk.png
+    - assets/page-1/images/shape1-1-CUA.png
+    - assets/page-1/images/shape1-2-9uC.png
+    - assets/page-1/images/-vfc.png
+    - assets/page-1/images/shape1-1-ERQ.png
+    - assets/page-1/images/shape3-3.png
+    - assets/page-1/images/shape3-3-G7k.png
+    - assets/page-1/images/sf-1.png
+    - assets/page-1/images/shape1-2-dAa.png
+    - assets/page-1/images/shape1-2-YoL.png
+    - assets/page-1/images/shape3-3-keW.png
+    - assets/page-1/images/c2.png
+    - assets/page-1/images/-KWz.png
+    - assets/page-1/images/fonte-1.png
+    - assets/page-1/images/logo2-1.png
+    - assets/page-1/images/-f4E.png
+    - assets/page-1/images/shape1-2-bg.png
+    - assets/page-1/images/-CGz.png
+    - assets/page-1/images/shape3-3-vTt.png
+    - assets/page-1/images/-JXc.png
+    - assets/page-1/images/perfil-bg.png
+    - assets/page-1/images/polygon-1.png
+    - assets/page-1/images/button-shape.png
+    - assets/page-1/images/button-shape-6BU.png
+    - assets/page-1/images/button-shape-mVt.png
+    - assets/page-1/images/shape3-3-tYz.png
+    - assets/page-1/images/mask-group.png
+    - assets/page-1/images/-sZC.png
+    - assets/page-1/images/shape3-1.png
+    - assets/page-1/images/shape3-2.png
+    - assets/page-1/images/perfil-bg-X3G.png
+    - assets/page-1/images/button-shape-9gE.png
+    - assets/page-1/images/notification.png
+    - assets/page-1/images/polygon-1-6fc.png
+    - assets/page-1/images/button-shape-4uG.png
+    - assets/page-1/images/polygon-1-vFC.png
+    - assets/page-1/images/polygon-1-qk6.png
+    - assets/page-1/images/polygon-1-6CA.png
+    - assets/page-1/images/fundo2-1.png
+    - assets/page-1/images/-6vn.png
+    - assets/page-1/images/voltar.png
+    - assets/page-1/images/shape3-3-uNS.png
+    - assets/page-1/images/shape1-1-bWA.png
+    - assets/page-1/images/button-shape-jsG.png
+    - assets/page-1/images/-UDG.png
+    - assets/page-1/images/-Q2v.png
+    - assets/page-1/images/notification-X7Y.png
+    - assets/page-1/images/button-shape-shC.png
+    - assets/page-1/images/-r9p.png
+    - assets/page-1/images/mask-group-sm4.png
+    - assets/page-1/images/polygon-1-RXg.png
+    - assets/page-1/images/button-shape-8S6.png
+    - assets/page-1/images/polygon-1-VGe.png
+    - assets/page-1/images/polygon-1-1AS.png
+    - assets/page-1/images/button-shape-2jk.png
+    - assets/page-1/images/button-shape-kpA.png
+    - assets/page-1/images/mask-group-hzJ.png
+    - assets/page-1/images/vector.png
+    - assets/page-1/images/button-shape-Lkz.png
+    - assets/page-1/images/button-shape-kn6.png
+    - assets/page-1/images/mask-group-442.png
+    - assets/page-1/images/image-4-bg.png
+    - assets/page-1/images/image-4-bg-ZG6.png
+    - assets/page-1/images/image-4-bg-pze.png
+    - assets/page-1/images/image-4-bg-2Cr.png
+    - assets/page-1/images/image-4-bg-mtW.png
+    - assets/page-1/images/image-4-bg-i34.png
+    - assets/page-1/images/image-4.png
+    - assets/page-1/images/shape1-2-z6N.png
+    - assets/page-1/images/right-arrow-24-outline.png
+    - assets/page-1/images/polygon-1-338.png
+    - assets/page-1/images/google-logo.png
+    - assets/page-1/images/-FvJ.png
+    - assets/page-1/images/resgati-1.png
+    - assets/page-1/images/-HZL.png
+    - assets/page-1/images/-eUJ.png
+    - assets/page-1/images/button-shape-UQ2.png
+    - assets/page-1/images/logo1-1.png
+    - assets/page-1/images/-BoY.png
+    - assets/page-1/images/shape4-1.png
+    - assets/page-1/images/facbook.png
+    - assets/page-1/images/mask-group-bTG.png
+    - assets/page-1/images/button-shape-xtr.png
+    - assets/page-1/images/vector-Tai.png
+    - assets/page-1/images/mask-group-MfG.png
+    - assets/page-1/images/image-4-bg-3mc.png
+    - assets/page-1/images/button-shape-E6e.png
+    - assets/page-1/images/mask-group-aX4.png
+    - assets/page-1/images/sf-1-dni.png
+    - assets/page-1/images/voltar-5q4.png
+    - assets/page-1/images/shape1-1-QVY.png
+    - assets/page-1/images/resgati-1-VHL.png
+    - assets/page-1/images/logo2-1-UwC.png
+    - assets/page-1/images/logo1-1-dJJ.png
+    - assets/page-1/images/mask-group-wcN.png
+    - assets/page-1/images/button-shape-mfg.png
+    - assets/page-1/images/notification-u14.png
+    - assets/page-1/images/rectangle-5.png
+    - assets/page-1/images/button-shape-LzN.png
+    - assets/page-1/images/button-shape-p2E.png
+    - assets/page-1/images/right-arrow-24-outline-EhY.png
+    - assets/page-1/images/c2-7fx.png
+    - assets/page-1/images/polygon-1-Pea.png
+    - assets/page-1/images/mask-group-PxN.png
+    - assets/page-1/images/voltar-ikr.png
+    - assets/page-1/images/button-shape-iQ2.png
+    - assets/page-1/images/perfil-bg-nhx.png
+    - assets/page-1/images/mask-group-bXx.png
+    - assets/page-1/images/button-shape-waz.png
+    - assets/page-1/images/button-shape-h4N.png
+    - assets/page-1/images/button-shape-WYz.png
+    - assets/page-1/images/button-shape-RpN.png
+    - assets/page-1/images/ellipse-2.png
+    - assets/page-1/images/rectangle-5-4Jv.png
+    - assets/page-1/images/perfil-bg-pyQ.png
+    - assets/page-1/images/location-pin-24-outline.png
+    - assets/page-1/images/button-shape-RNr.png
+    - assets/page-1/images/button-shape-7mU.png
+    - assets/page-1/images/rectangle-5-CoL.png
+    - assets/page-1/images/rectangle-5-Uwc.png
+    - assets/page-1/images/button-shape-cxa.png
+    - assets/page-1/images/perfil-bg-UJe.png
+    - assets/page-1/images/button-shape-hCe.png
+    - assets/page-1/images/image-4-bg-sHk.png
+    - assets/page-1/images/button-shape-RvA.png
+    - assets/page-1/images/button-shape-jRC.png
+    - assets/page-1/images/image-4-bg-NJn.png
+    - assets/page-1/images/perfil-bg-Qjk.png
+    - assets/page-1/images/location-pin-24-outline-z34.png
+    - assets/page-1/images/button-shape-sNz.png
+    - assets/page-1/images/rectangle-5-HjQ.png
+    - assets/page-1/images/button-shape-t8r.png
+    - assets/page-1/images/ellipse-2-Hpv.png
+    - assets/page-1/images/perfil-bg-bw8.png
+    - assets/page-1/images/voltar-SLi.png
+    - assets/page-1/images/rosa-2.png
+    - assets/page-1/images/button-shape-cUA.png
+    - assets/page-1/images/button-shape-Qpa.png
+    - assets/page-1/images/vector-L3C.png
+    - assets/page-1/images/button-shape-JfL.png
+    - assets/page-1/images/rosa-1.png
+    - assets/page-1/images/resgati-1-ZT8.png
+    - assets/page-1/images/mask-group-2K4.png
+    - assets/page-1/images/c2-yeA.png
+    - assets/page-1/images/rosa-2-p4z.png
+    - assets/page-1/images/button-shape-CJE.png
+    - assets/page-1/images/button-shape-y7x.png
+    - assets/page-1/images/button-shape-r5G.png
+    - assets/page-1/images/right-arrow-24-outline-sE2.png
+    - assets/page-1/images/mask-group-gQi.png
+    - assets/page-1/images/logo1-1-MSJ.png
+    - assets/page-1/images/image-4-bg-7Aa.png
+    - assets/page-1/images/button-shape-jmU.png
+    - assets/page-1/images/selasie-apeadu-jo0t9cfogbc-unsplash-1.png
+    - assets/page-1/images/button-shape-V4N.png
+    - assets/page-1/images/mask-group-1Hc.png
+    - assets/page-1/images/button-shape-MAS.png
+    - assets/page-1/images/mask-group-ahp.png
+    - assets/page-1/images/button-shape-dVc.png
+    - assets/page-1/images/mask-group-C3U.png
+    - assets/page-1/images/mask-group-uS2.png
+    - assets/page-1/images/icon-hair-dryer.png
+    - assets/page-1/images/button-shape-6VQ.png
+    - assets/page-1/images/shape1-1-Hg6.png
+    - assets/page-1/images/notification-F2a.png
+    - assets/page-1/images/button-shape-8wL.png
+    - assets/page-1/images/mask-group-kKU.png
+    - assets/page-1/images/button-shape-7Rc.png
+    - assets/page-1/images/vector-sr2.png
+    - assets/page-1/images/shape1-1-94n.png
+    - assets/page-1/images/button-shape-w8N.png
+    - assets/page-1/images/mask-group-PC6.png
+    - assets/page-1/images/icon-page-not-found.png
+    - assets/page-1/images/vector-kWE.png
+    - assets/page-1/images/right-arrow-24-outline-Ddt.png
+    - assets/page-1/images/sf-1-ddk.png
+    - assets/page-1/images/image-4-bg-EHQ.png
+    - assets/page-1/images/button-shape-Qok.png
+    - assets/page-1/images/button-shape-1UW.png
+    - assets/page-1/images/vector-MHU.png
+    - assets/page-1/images/icon-talk-about-work.png
+    - assets/page-1/images/notification-Gtr.png
+    - assets/page-1/images/vector-AbL.png
+    - assets/page-1/images/button-shape-Nie.png
+    - assets/page-1/images/notification-UpJ.png
+    - assets/page-1/images/vector-8U2.png
+    - assets/page-1/images/vector-sgW.png
+    - assets/page-1/images/mask-group-PKQ.png
+    - assets/page-1/images/icon-vaccine.png
+    - assets/page-1/images/vector-gVQ.png
+    - assets/page-1/images/vector-sGN.png
+    - assets/page-1/images/mask-group-sgv.png
+    - assets/page-1/images/button-shape-JKU.png
+    - assets/page-1/images/button-shape-2NN.png
+    - assets/page-1/images/button-shape-Ym8.png
+    - assets/page-1/images/perfil-bg-4mx.png
+    - assets/page-1/images/mask-group-4sk.png
+    - assets/page-1/images/vector-SNW.png
+    - assets/page-1/images/c2-GgA.png
+    - assets/page-1/images/vector-gCJ.png
+    - assets/page-1/images/vector-3qU.png
+    - assets/page-1/images/button-shape-waz-7kN.png
+    - assets/page-1/images/vector-Agz.png
+    - assets/page-1/images/button-shape-aDx.png
+    - assets/page-1/images/rosa-2-w14.png
+    - assets/page-1/images/rosa-2-Pgv.png
+    - assets/page-1/images/rosa-2-Q9Q.png
+    - assets/page-1/images/perfil-bg-U66.png
+    - assets/page-1/images/button-shape-qHC.png
+    - assets/page-1/images/vector-goc.png
+    - assets/page-1/images/vector-Qt2.png
+    - assets/page-1/images/vector-VnJ.png
+    - assets/page-1/images/vector-Ejt.png
+    - assets/page-1/images/vector-6n6.png
+    - assets/page-1/images/rosa-2-smU.png
+    - assets/page-1/images/button-shape-Gnv.png
+    - assets/page-1/images/vector-vca.png
+    - assets/page-1/images/vector-rm8.png
+    - assets/page-1/images/vector-pmp.png
+    - assets/page-1/images/c1.png
+    - assets/page-1/images/vector-xwU.png
+    - assets/page-1/images/image-4-zjL.png
+    - assets/page-1/images/shape1-1-XzA.png
+    - assets/page-1/images/image-5.png
+    - assets/page-1/images/button-shape-XZU.png
+    - assets/page-1/images/perfil-bg-tGA.png
+    - assets/page-1/images/vector-txJ.png
+    - assets/page-1/images/logo2-1-tjU.png
+    - assets/page-1/images/vector-v4r.png
+    - assets/page-1/images/vector-J1G.png
+    - assets/page-1/images/vector-Bzz.png
+    - assets/page-1/images/button-shape-dtv.png
+    - assets/page-1/images/selasie-apeadu-jo0t9cfogbc-unsplash-1-sC6.png
+    - assets/page-1/images/vector-W5x.png
+    - assets/page-1/images/vector-gmp.png
+    - assets/page-1/images/vector-EMQ.png
+    - assets/page-1/images/vector-u7G.png
+    - assets/page-1/images/notification-nUr.png
+    - assets/page-1/images/vector-JwL.png
+    - assets/page-1/images/button-shape-e3c.png
+    - assets/page-1/images/button-shape-tLA.png
+    - assets/page-1/images/vector-19k.png
+    - assets/page-1/images/vector-9JJ.png
+    - assets/page-1/images/vector-vbC.png
+    - assets/page-1/images/shape1-1-CUA-Mrr.png
+    - assets/page-1/images/image-4-yfG.png
+    - assets/page-1/images/button-shape-UUr.png
+    - assets/page-1/images/rectangle-5-kMg.png
+    - assets/page-1/images/vector-LEe.png
+    - assets/page-1/images/button-shape-ZNA.png
+    - assets/page-1/images/perfil-bg-42e.png
+    - assets/page-1/images/vector-Uc2.png
+    - assets/page-1/images/button-shape-Yxr.png
+    - assets/page-1/images/vector-8PU.png
+    - assets/page-1/images/button-shape-d2A.png
+    - assets/page-1/images/button-shape-iCi.png
+    - assets/page-1/images/image-5-Tog.png
+    - assets/page-1/images/image-5-eUJ.png
+    - assets/page-1/images/vector-k6N.png
+    - assets/page-1/images/button-shape-fdt.png
+    - assets/page-1/images/vector-nTL.png
+    - assets/page-1/images/vector-nsc.png
+    - assets/page-1/images/vector-hy4.png
+    - assets/page-1/images/vector-BGE.png
+    - assets/page-1/images/vector-y9t.png
+    - assets/page-1/images/vector-gJE.png
+    - assets/page-1/images/button-shape-G2W.png
+    - assets/page-1/images/image-4-1fY.png
+    - assets/page-1/images/shape1-1-Gqg.png
+    - assets/page-1/images/auto-group-au6a.png
+    - assets/page-1/images/button-shape-MtE.png
+    - assets/page-1/images/edit.png
+    - assets/page-1/images/button-shape-HT8.png
+    - assets/page-1/images/perfil-bg-ENN.png
+    - assets/page-1/images/delete.png
+    - assets/page-1/images/perfil-bg-5hU.png
+    - assets/page-1/images/button-shape-VJa.png
+    - assets/page-1/images/vector-qFG.png
+    - assets/page-1/images/edit-hvr.png
+    - assets/page-1/images/vector-smC.png
+    - assets/page-1/images/vector-f9C.png
+    - assets/page-1/images/notification-2Jv.png
+    - assets/page-1/images/vector-Kht.png
+    - assets/page-1/images/vector-bAz.png
+    - assets/page-1/images/vector-cJ6.png
+    - assets/page-1/images/shape1-1-nEN.png
+    - assets/page-1/images/image-4-WLi.png
+    - assets/page-1/images/vector-2Zg.png
+    - assets/page-1/images/button-shape-aFk.png
+    - assets/page-1/images/auto-group-k9dc.png
+    - assets/page-1/images/vector-UC2.png
+    - assets/page-1/images/button-shape-F4v.png
+    - assets/page-1/images/button-shape-ejt.png
+    - assets/page-1/images/button-shape-Vhk.png
+    - assets/page-1/images/vector-Aqp.png
+    - assets/page-1/images/button-shape-ToQ.png
+    - assets/page-1/images/vector-4ft.png
+    - assets/page-1/images/auto-group-sope.png
+    - assets/page-1/images/button-shape-Dwg.png
+    - assets/page-1/images/button-shape-4H8.png
+    - assets/page-1/images/button-shape-Par.png
+    - assets/page-1/images/vector-iXt.png
+    - assets/page-1/images/delete-dTg.png
+    - assets/page-1/images/button-shape-GhY.png
+    - assets/page-1/images/button-shape-mrS.png
+    - assets/page-1/images/button-shape-6XL.png
+    - assets/page-1/images/button-shape-dfY.png
+    - assets/page-1/images/image-4-bg-GqY.png
+    - assets/page-1/images/notification-Mf8.png
+    - assets/page-1/images/button-shape-etz.png
+    - assets/page-1/images/vector-h1L.png
+    - assets/page-1/images/vector-jLe.png
+    - assets/page-1/images/button-shape-j9c.png
+    - assets/page-1/images/notification-s5U.png
+    - assets/page-1/images/perfil-bg-5xN.png
+    - assets/page-1/images/button-shape-gze.png
+    - assets/page-1/images/vector-xAn.png
+    - assets/page-1/images/button-shape-9Y6.png
+    - assets/page-1/images/notification-efC.png
+    - assets/page-1/images/button-shape-LHY.png
+    - assets/page-1/images/shape1-1-SxA.png
+    - assets/page-1/images/button-shape-ohL.png
+    - assets/page-1/images/button-shape-Kog.png
+    - assets/page-1/images/perfil-bg-5ox.png
+    - assets/page-1/images/button-shape-rUS.png
+    - assets/page-1/images/button-shape-uGn.png
+    - assets/page-1/images/perfil-bg-jcE.png
+    - assets/page-1/images/image-4-P8W.png
+    - assets/page-1/images/perfil-bg-XdU.png
+    - assets/page-1/images/shape1-1-YgJ.png
+    - assets/page-1/images/perfil-bg-smk.png
+    - assets/page-1/images/selasie-apeadu-jo0t9cfogbc-unsplash-1-VSJ.png
+    - assets/page-1/images/perfil-bg-2LA.png
+    - assets/page-1/images/emoji-white-smiling-face.png
+    - assets/page-1/images/image-4-J4r.png
+    - assets/page-1/images/voltar-UwC.png
+    - assets/page-1/images/mask-group-Ya6.png
+    - assets/page-1/images/perfil-bg-mS2.png
+    - assets/page-1/images/ellipse-2-KeJ.png
+    - assets/page-1/images/rectangle-29-bg.png
+    - assets/page-1/images/perfil-bg-Tqt.png
+    - assets/page-1/images/emoji-negative-squared-cross-mark.png
+    - assets/page-1/images/ellipse-9.png
+    - assets/page-1/images/location-pin-24-outline-Bbx.png
+    - assets/page-1/images/rectangle-210-bg.png
+    - assets/page-1/images/voltar-ZkN.png
+    - assets/page-1/images/button-shape-kDY.png
+    - assets/page-1/images/botoes-foto.png
+    - assets/page-1/images/button-shape-ACi.png
+    - assets/page-1/images/mask-group-5Wa.png
+    - assets/page-1/images/botoes-foto-ya2.png
+    - assets/page-1/images/rectangle-210.png
+    - assets/page-1/images/mask-group-4gA.png
+    - assets/page-1/images/mask-group-6YS.png
+    - assets/page-1/images/mask-group-kXc.png
+    - assets/page-1/images/vector-mDU.png
+    - assets/page-1/images/button-shape-Rc6.png
+    - assets/page-1/images/icon-heart.png
+    - assets/page-1/images/icon-message.png
+    - assets/page-1/images/emoji-beating-heart.png
+    - assets/page-1/images/mask-group-xYz.png
+    - assets/page-1/images/emoji-white-medium-star.png
+    - assets/page-1/images/icon-clock.png
+    - assets/page-1/images/icon-notes.png
+    - assets/page-1/images/botoes-foto-Mmk.png
+    - assets/page-1/images/icon-email.png
+    - assets/page-1/images/icon-camera.png
+    - assets/page-1/images/edit-88i.png
+    - assets/page-1/images/image-7-bg.png
+    - assets/page-1/images/emoji-briefcase.png
+    - assets/page-1/images/rectangle-29.png
+    - assets/page-1/images/botoes-foto-8Ua.png
+    - assets/page-1/images/question-focus-marketing-sales.png
+    - assets/page-1/images/icon-checklist.png
+    - assets/page-1/images/vector-VUe.png
+    - assets/page-1/images/location-pin-24-outline-e5p.png
+    - assets/page-1/images/vector-35L.png
+    - assets/page-1/images/vector-kqY.png
+    - assets/page-1/images/image-7-bg-g9g.png
+    - assets/page-1/images/delete-T1L.png
+    - assets/page-1/images/delete-kYA.png
+    - assets/page-1/images/delete-YGA.png
+    - assets/page-1/images/emoji-white-medium-star-5wp.png
+    - assets/page-1/images/edit-ZNA.png
+    - assets/page-1/images/emoji-white-medium-star-wJi.png
+    - assets/page-1/images/edit-AVQ.png
+    - assets/page-1/images/edit-qBx.png
+    - assets/page-1/images/delete-5a2.png
+    - assets/page-1/images/emoji-white-medium-star-neN.png
+  #   - images/a_dot_ham.jpeg
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
