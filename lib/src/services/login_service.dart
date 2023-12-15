@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:adopet_app/src/constants/http_config.dart';
 import 'package:adopet_app/src/models/index.dart';
@@ -27,8 +29,6 @@ class LoginService {
       final response =
           await DioConfig.dio.post('/api/v1/user/login', data: user.toMap());
 
-      /* response.data['password'] = user.password; */
-      print(response.data);
       UserPreferences.saveUserPreferences(response.data);
 
       return response.data;
@@ -40,4 +40,17 @@ class LoginService {
       return {'message': "Ocurrio un error en el server"};
     }
   }
+
+  /* List<Cookie> parseCookies(String rawCookies) {
+    List<Cookie> cookies = [];
+    List<String> cookieStrings = rawCookies.split('; ');
+
+    for (var str in cookieStrings) {
+      var split = str.split('=');
+      var cookie = Cookie(split[0], split.length > 1 ? split[1] : '');
+      cookies.add(cookie);
+    }
+
+    return cookies;
+  } */
 }

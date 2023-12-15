@@ -1,16 +1,14 @@
 import 'dart:io';
-import 'package:dio/dio.dart';
+import 'package:adopet_app/src/shared_preferences/adopcion_preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:adopet_app/src/constants/routes.dart';
 import 'package:adopet_app/src/controllers/index.dart';
 import 'package:adopet_app/src/services/index.dart';
-import 'package:adopet_app/src/ui/index.dart';
-import 'package:http/http.dart' as http;
 
 class AdopcionForm extends StatefulWidget {
-  AdopcionForm({super.key});
+  const AdopcionForm({super.key});
 
   @override
   State<AdopcionForm> createState() => _AdopcionFormState();
@@ -18,15 +16,7 @@ class AdopcionForm extends StatefulWidget {
 
 class _AdopcionFormState extends State<AdopcionForm> {
   final adopcionService = AdopcionService();
-
-  /* final TextEditingController nombreController = TextEditingController();
-  final TextEditingController descripcionController = TextEditingController(); */
   String animalValue = 'Perro';
-
-  /* final TextEditingController razaController = TextEditingController();
-  final TextEditingController edadController = TextEditingController();
-  final TextEditingController mesesController = TextEditingController();
-  final TextEditingController energiaController = TextEditingController(); */
   List<File> fotos = [];
 
   void _pickImage() async {
@@ -42,34 +32,47 @@ class _AdopcionFormState extends State<AdopcionForm> {
 
   @override
   Widget build(BuildContext context) {
+    final prefsAdop = AdopcionPreferences();
+    if (prefsAdop.especie != '') {
+      animalValue = prefsAdop.especie;
+    }
     final registerForm = Provider.of<AdopcionFormController>(context);
     return Form(
       child: Column(
         children: <Widget>[
-          SizedBox(height: 10),
           TextFormField(
-            /* controller: nombreController, */
-            onChanged: (value) => registerForm.adopcion.nombre = value,
-            decoration: InputDecoration(
+            initialValue: prefsAdop.nombre,
+            onChanged: (value) {
+              prefsAdop.nombre = value;
+              registerForm.adopcion.nombre = value;
+            },
+            decoration: const InputDecoration(
               labelText: 'Nombre',
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextFormField(
-            /* controller: descripcionController, */
-            onChanged: (value) => registerForm.adopcion.descripcion = value,
-            decoration: InputDecoration(
+            initialValue: prefsAdop.descripcion,
+            onChanged: (value) {
+              prefsAdop.descripcion = value;
+              registerForm.adopcion.descripcion = value;
+            },
+            decoration: const InputDecoration(
               labelText: 'Descripción',
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 20),
+          const Text('Especie:', style: TextStyle(fontSize: 16)),
           DropdownButton<String>(
             value: animalValue,
             onChanged: (value) {
               setState(() {
-                animalValue = value!;
+                if (['Perro', 'Gato', 'Ave', 'Otro'].contains(value)) {
+                  animalValue = value!;
+                  prefsAdop.especie = value;
+                }
               });
             },
             items: <String>['Perro', 'Gato', 'Ave', 'Otro'].map((String value) {
@@ -79,83 +82,134 @@ class _AdopcionFormState extends State<AdopcionForm> {
               );
             }).toList(),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextFormField(
-            /* controller: razaController, */
-            onChanged: (value) => registerForm.adopcion.raza = value,
-            decoration: InputDecoration(
+            initialValue: prefsAdop.raza,
+            onChanged: (value) {
+              prefsAdop.raza = value;
+              registerForm.adopcion.raza = value;
+            },
+            decoration: const InputDecoration(
               labelText: 'Raza',
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextFormField(
-            /* controller: edadController, */
-            onChanged: (value) => registerForm.adopcion.edad = int.parse(value),
-            decoration: InputDecoration(
+            initialValue: prefsAdop.edad.toString(),
+            onChanged: (value) {
+              final newValue = value.replaceAll(RegExp(r'[^0-9]'), '');
+              registerForm.adopcion.edad = int.tryParse(newValue) ?? 0;
+              /* prefsAdop.edad = int.tryParse(newValue) ?? 0; */
+              prefsAdop.edad = newValue;
+            },
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor ingrese su edad';
+              }
+              return null;
+            },
+            keyboardType: const TextInputType.numberWithOptions(
+              decimal: false,
+              signed: false,
+            ),
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(
+                  RegExp(r'[0-9]')), // Solo permite números
+            ],
+            decoration: const InputDecoration(
               labelText: 'Edad',
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: _pickImage,
-            child: Text('Seleccionar Fotos'),
-          ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
+          const Text('Fotos:', style: TextStyle(fontSize: 16)),
+          const SizedBox(height: 10),
           GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
             ),
-            itemCount: fotos.length,
+            itemCount:
+                fotos.length + 1, // Se agrega 1 para el ícono de selección
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return Image.file(fotos[index]);
+              if (index == fotos.length) {
+                return IconButton(
+                  icon: const Icon(Icons.add), // Ícono de suma (+)
+                  onPressed: _pickImage,
+                );
+              }
+              return Stack(
+                children: [
+                  Image.file(fotos[index]),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () {
+                        // Eliminar la imagen en la posición 'index'
+                        setState(() {
+                          fotos.removeAt(index);
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              );
             },
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () async {
-              print('Registrar Animal');
-              // Procesar los datos del formulario y las fotos aquí
-              registerForm.adopcion.especie = animalValue;
-              /* if (!registerForm.isValidForm()) return; */
+          const SizedBox(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () async {
+                // Procesar los datos del formulario y las fotos aquí
+                registerForm.adopcion.especie = animalValue;
+                List<String> images = [];
+                for (var i = 0; i < fotos.length; i++) {
+                  var image = await urlCloudinary(fotos[i], context);
+                  images.add(image);
+                  print("imagen url: " + image.toString());
+                }
 
-              /* MultipartFile image = await MultipartFile.fromFile(fotos[0].path);
-              registerForm.adopcion.image = image; */
-              List<http.MultipartFile> images = [];
-              for (var i = 0; i < fotos.length; i++) {
-                var image = await http.MultipartFile.fromPath(
-                    'fieldName', fotos[i].path);
-                images.add(image);
-              }
+                registerForm.adopcion.image = images;
 
-              registerForm.adopcion.image = images;
+                print(registerForm.adopcion.toMap());
 
-              var response = await adopcionService.registerNewAdopcion(
-                registerForm.adopcion,
-              );
-              if (response.containsKey('message')) {
-                // ignore: use_build_context_synchronously
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(response['message']),
-                    backgroundColor: Colors.green,
-                  ),
+                bool response = await adopcionService.registerNewAdopcion(
+                  registerForm.adopcion,
                 );
-                /* Navigator.pushReplacementNamed(context, Routes.login); */
-              } else {
-                // ignore: use_build_context_synchronously
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(response['error']),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            },
-            child: Text('Registrar Animal'),
+                if (response) {
+                  // ignore: use_build_context_synchronously
+                  prefsAdop.clearAdoptar();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Animal registrado correctamente"),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                  Navigator.pop(context);
+                } else {
+                  // ignore: use_build_context_synchronously
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Ocurrio un error"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
+              child: const Text('Registrar Animal',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            ),
           ),
         ],
       ),

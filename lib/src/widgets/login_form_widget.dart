@@ -1,15 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:adopet_app/src/constants/routes.dart';
 import 'package:adopet_app/src/controllers/index.dart';
 import 'package:adopet_app/src/services/index.dart';
 import 'package:adopet_app/src/ui/index.dart';
-
-/* import 'package:project_topics_movil/src/constants/routes.dart';
-
-import 'package:project_topics_movil/src/controllers/index.dart';
-import 'package:project_topics_movil/src/services/index.dart'; */
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});
@@ -100,7 +94,7 @@ class LoginForm extends StatelessWidget {
                       print(auth);
                     }
 
-                    if (auth["error"] != null) {
+                    if (auth["erros"] != null) {
                       // ignore: use_build_context_synchronously
                       _showDialogError(context);
                       return;
@@ -109,8 +103,7 @@ class LoginForm extends StatelessWidget {
                     /* restartProviders(context); */
 
                     // ignore: use_build_context_synchronously
-                    Navigator.pushReplacementNamed(
-                        context, Routes.home);
+                    Navigator.pushReplacementNamed(context, '/home');
 
                     // if (!context.mounted) return;
                     // _showDialogError(context);
@@ -193,6 +186,6 @@ class LoginForm extends StatelessWidget {
         Provider.of<CategoryPropertyService>(context, listen: false);
     categoriaService.getAllListCategoryProperty(); */
 
-    Navigator.pushReplacementNamed(context, Routes.home);
+    Navigator.pushReplacementNamed(context, '/home');
   }
 }

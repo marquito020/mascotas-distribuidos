@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {
@@ -32,18 +31,15 @@ class UserPreferences {
   set role(String role) => _prefs.setString('role', role);
 
   static void saveUserPreferences(Map<String, dynamic> dataMap) {
-    if (kDebugMode) {
-      print(dataMap['payload']['user']['email']);
-    }
     final prefs = UserPreferences();
 
     prefs.token = dataMap['token'];
-    prefs.id = dataMap['payload']['user']['id'];
-    prefs.email = dataMap['payload']['user']['email'];
-    prefs.name = dataMap['payload']['user']['name'];
+    prefs.id = dataMap['user']['_id'];
+    prefs.email = dataMap['user']['email'];
+    prefs.name = dataMap['user']['name'];
     /* prefs.celular = dataMap['user']['celular']; */
     /* prefs.img = dataMap['user']['img']; */
-    prefs.role = dataMap['payload']['user']['role'];
+    prefs.role = dataMap['user']['role'];
   }
 
   void clearUser() {

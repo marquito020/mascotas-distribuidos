@@ -172,15 +172,17 @@ class RegisterForm extends StatelessWidget {
                   Navigator.pushReplacementNamed(context, Routes.login);
                 }
               },
-              child: const Text('Registrarse'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue[600],
-                onPrimary: Colors.white,
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue[600],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 minimumSize: const Size(300, 50),
               ),
+              child: const SizedBox(
+                  width: double.infinity,
+                  child: Center(child: Text('Registrarse'))),
             ),
           ),
 
